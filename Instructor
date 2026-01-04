@@ -1,0 +1,105 @@
+public class Instructor extends Person {
+    private String title; // Dr., Prof., etc.
+    private String department;
+    private int experienceYears;
+
+    private String[] assignedCourses;
+    private int courseCount;
+
+    public Instructor(String id, String name, String email, String phoneNumber,
+                      String title, String department, int experienceYears) {
+        super(id, name, email, phoneNumber);
+        this.title = title;
+        this.department = department;
+        this.experienceYears = experienceYears;
+        this.assignedCourses = new String[8]; // Maximum 8 courses
+        this.courseCount = 0;
+    }
+
+    public Instructor(String id, String name, String title, String department) {
+        super(id, name);
+        this.title = title;
+        this.department = department;
+        this.experienceYears = 0;
+        this.assignedCourses = new String[8];
+        this.courseCount = 0;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public int getExperienceYears() {
+        return experienceYears;
+    }
+
+    public void setExperienceYears(int experienceYears) {
+        this.experienceYears = experienceYears;
+    }
+
+    public String[] getAssignedCourses() {
+        return assignedCourses;
+    }
+
+    public int getCourseCount() {
+        return courseCount;
+    }
+
+    public boolean assignCourse(String courseCode) {
+        assignedCourses[courseCount] = courseCode;
+        courseCount++;
+        return true;
+    }
+
+    public boolean removeCourse(String courseCode) {
+        boolean found = false;
+        int i = 0;
+        int j = 0;
+
+        while (i < courseCount) {
+            if (!assignedCourses[i].equals(courseCode)) {
+                assignedCourses[j] = assignedCourses[i];
+                j++;
+            } else {
+                found = true;
+            }
+            i++;
+        }
+
+        if (found) {
+            courseCount = j;
+            assignedCourses[j] = null;
+        }
+        return found;
+    }
+
+    public String getRole() {
+        return "Instructor";
+    }
+
+    public void displayInfo() {
+        System.out.println("=== Instructor Information ===");
+        System.out.println("ID: " + getId());
+        System.out.println("Name: " + getName());
+        System.out.println("Title: " + title);
+        System.out.println("Department: " + department);
+        System.out.println("Experience: " + experienceYears + " years");
+        System.out.println("Contact: " + getContactInfo());
+    }
+
+    public String getContactInfo() {
+        return super.getContactInfo() + ", Title: " + title;
+    }
+}
