@@ -1,0 +1,103 @@
+// AttendanceRecord class tracks individual attendance entries
+public class AttendanceRecord {
+    private String recordId;
+    private String studentId;
+    private String courseCode;
+    private String date; // Format: "YYYY-MM-DD"
+    private String status; // "Present", "Absent", "Late", "Excused"
+    private String notes;
+    private int weekNumber;
+
+    public AttendanceRecord(String recordId, String studentId, String courseCode, String date, String status, int weekNumber) {
+        this.recordId = recordId;
+        this.studentId = studentId;
+        this.courseCode = courseCode;
+        this.date = date;
+        this.status = status;
+        this.weekNumber = weekNumber;
+        this.notes = "";
+    }
+
+    public AttendanceRecord(String recordId, String studentId, String courseCode, String date) {
+        this.recordId = recordId;
+        this.studentId = studentId;
+        this.courseCode = courseCode;
+        this.date = date;
+        this.status = "Present"; // Default status
+        this.weekNumber = 1;
+        this.notes = "";
+    }
+
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public int getWeekNumber() {
+        return weekNumber;
+    }
+
+    public void setWeekNumber(int weekNumber) {
+        this.weekNumber = weekNumber;
+    }
+
+    // Method to check if student was present
+    public boolean isPresent() {
+        return status.equals("Present");
+    }
+
+    // Method to check if student was absent
+    public boolean isAbsent() {
+        return status.equals("Absent");
+    }
+
+    // Method to display record information
+    public void displayRecord() {
+        System.out.println("Record ID: " + recordId + " | Student: " + studentId +
+                " | Course: " + courseCode + " | Date: " + date +
+                " | Status: " + status + " | Week: " + weekNumber);
+    }
+}
